@@ -85,7 +85,7 @@ Si vous avez prévu d'utiliser un disque dur externe, vous pourriez aussi faire 
 
 Bitcoin Core est l'implémentation de référence de Bitcoin. Comme Bitcoin est un logiciel libre, n'importe qui peut écrire sa propre version du logiciel, et plusieurs l'ont déjà fait. Quand vous serez devenu un expert, vous pourrez expérimenter avec d'autres implémentations, mais en attendant il est plus sage de ne pas sortir des sentiers battus.
 
-Télécharger le fichier d'installation de Bitcoin Core depuirs [bitcoin.org/download](https://bitcoincore.org/en/download/) et déplacez-le dans le répertoire dans lequel vous souhaitez télécharger la blockchain. 
+Télécharger le fichier d'installation de Bitcoin Core depuis [bitcoin.org/download](https://bitcoincore.org/en/download/) et déplacez-le dans le répertoire dans lequel vous souhaitez télécharger la blockchain. 
 
 Une bonne habitude à prendre est de vérifier l'authenticité d'un programme que vous venez de télécharger, surtout quand il y a potentiellement beaucoup d'argent en jeu. Pour ce faire, nous allons calculer son _checksum_ et le comparer avec celui fourni par le développeur du logiciel. Cela permet de s'assurer que ce que vous avez téléchargé est bien conforme au logiciel d'origine, et qu'il ne lui a pas été substitué une version piratée. 
 
@@ -103,15 +103,15 @@ Nous allons ensuite calculer le _checksum_ du programme que nous venons de tél�
 > cd \bitcoin [remplacer par le chemin de votre répertoire]
 #> mkdir bitcoin_mainnet
 #> dir
-> certutil -hashfile bitcoin-0.17.0-win64-setup.exe sha256
-b37f738ab17a93e24028fa74280b74c353653cf03fc2fb7da6ead8669e440b1a
+> certutil -hashfile bitcoin-0.18.0-win64-setup.exe sha256
+e2478cd7955c36a5b0d31133d876cc602fb47142e65ca367c0cf21ea6dce04db
 ```
 ![Commande Windows : vérification du checksum](images/10_blockchain_wincheck.png)
 
-Comparer la valeur que vous obtenez avec celle que vous trouverez [ici](https://bitcoincore.org/bin/bitcoin-core-0.17.0/SHA256SUMS.asc) (**Attention, ce lien est pour la version 17.0, faites attention si vous téléchargez une autre version**. Pour les fichiers Windows v0.17.0, vous devriez voir :
+Comparer la valeur que vous obtenez avec celle que vous trouverez [ici](https://bitcoincore.org/bin/bitcoin-core-0.18.0/SHA256SUMS.asc) (**Attention, ce lien est pour la version 18.0, faites attention si vous téléchargez une autre version**. Pour les fichiers Windows v0.18.0, vous devriez voir :
 ```
-1f4091f6f32685aac3f790edae8657abe0c96448720b165762399a31499f8ee7  bitcoin-0.17.0-win32-setup.exe
-b37f738ab17a93e24028fa74280b74c353653cf03fc2fb7da6ead8669e440b1a  bitcoin-0.17.0-win64-setup.exe
+e2478cd7955c36a5b0d31133d876cc602fb47142e65ca367c0cf21ea6dce04db  bitcoin-0.18.0-win64-setup.exe
+29f449e2d1986a924b512e043893f932170830a45981323d8943ba6410848153  bitcoin-0.18.0-win64.zip
 ```
 
 ### Installer Bitcoin Core
