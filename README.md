@@ -2,6 +2,7 @@
 
 -----
 # Thunder Badger : un nœud Bitcoin et ⚡Lightning️⚡ dans votre vieux portable pourri !
+![thunderbadger_banner](./images/thunderbadgersmall.png)
 
 _:warning: **Ce guide est encore en construction, et peut contenir des erreurs**. Si vous avez détecté une erreur, ou tout simplement que vous avez une proposition pour l'améliorer, merci d'ouvrir un ticket ci-dessus ("issue")._
 
