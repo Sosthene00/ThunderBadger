@@ -66,7 +66,7 @@ Sur votre ordinateur habituel, commencez par installer Electrum.
   # télécharger le code et les signatures
   $ wget https://github.com/chris-belcher/electrum-personal-server/archive/electrum-personal-server-v0.1.7.tar.gz
   $ wget https://github.com/chris-belcher/electrum-personal-server/releases/download/electrum-personal-server-v0.1.7/electrum-personal-server-v0.1.7.tar.gz.asc
-  $ wget https://raw.githubusercontent.com/chris-belcher/electrum-personal-server/master/pgp/pubkeys/belcher.asc
+  $ wget https://raw.githubusercontent.com/chris-belcher/electrum-personal-server/master/docs/pubkeys/belcher.asc
   
   # vérifier la signature de Chris Belcher et l'intégrité du fichier téléchargé
   $ gpg belcher.asc
