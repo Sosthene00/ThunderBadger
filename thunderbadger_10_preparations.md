@@ -54,7 +54,7 @@ Lorsque vous lancerez votre nœud tout neuf, il n'aura en mémoire que le block 
 
 Cette synchronisation initiale nécessite de réaliser les opérations suivantes :
 
-* télécharger l'intégralité de la blockchain (plus de 200 Go en août 2018),
+* télécharger l'intégralité de la blockchain (environ 250Go en novembre 2019),
 
 * valider l'intégralité des transactions ayant jamais eu lieu, ainsi que l'intégralité des blocs minés jusqu'à aujourd'hui,
 
@@ -97,27 +97,25 @@ Pour ouvrir la console dans Windows, vous pouvez presser `Win+R`, saisir `cmd`, 
 
 Une fois la console ouverte, la première chose à faire est d'ouvrir le répertoire dans lequel vous venez de déplacer le fichier d'installation de Bitcoin Core (si vous n'êtes pas sûr, vérifiez où se trouve le répertoire dans une fenêtre).
 
-Nous allons ensuite calculer le _checksum_ du programme que nous venons de télécharger. En supposant que vous allez utiliser le disque D:, voici toutes les commandes que vous devez saisir :
+Nous allons ensuite calculer le _checksum_ du programme que nous venons de télécharger. En supposant que le fichier d'installation se trouve dans le dossier `C:\bitcoin`, voici toutes les commandes que vous devez saisir :
 ```
-> D:
-> cd \bitcoin [remplacer par le chemin de votre répertoire]
-#> mkdir bitcoin_mainnet
-#> dir
-> certutil -hashfile bitcoin-0.18.0-win64-setup.exe sha256
-e2478cd7955c36a5b0d31133d876cc602fb47142e65ca367c0cf21ea6dce04db
+> C:
+> cd \bitcoin
+> certutil -hashfile bitcoin-0.18.1-win64-setup.exe sha256
+3bac0674c0786689167be2b9f35d2d6e91d5477dee11de753fe3b6e22b93d47c
 ```
-![Commande Windows : vérification du checksum](images/10_blockchain_wincheck.png)
+![Commande Windows : vérification du checksum](images/Bitcoin_windows_certUtil.PNG)
 
-Comparer la valeur que vous obtenez avec celle que vous trouverez [ici](https://bitcoincore.org/bin/bitcoin-core-0.18.0/SHA256SUMS.asc) (**Attention, ce lien est pour la version 18.0, faites attention si vous téléchargez une autre version**. Pour les fichiers Windows v0.18.0, vous devriez voir :
+Comparer la valeur que vous obtenez avec celle que vous trouverez [ici](https://bitcoincore.org/bin/bitcoin-core-0.18.1/SHA256SUMS.asc) (**Attention, ce lien est pour la version 18.1, faites attention si vous téléchargez une autre version**. Pour les fichiers Windows v0.18.1, vous devriez voir :
 ```
-e2478cd7955c36a5b0d31133d876cc602fb47142e65ca367c0cf21ea6dce04db  bitcoin-0.18.0-win64-setup.exe
-29f449e2d1986a924b512e043893f932170830a45981323d8943ba6410848153  bitcoin-0.18.0-win64.zip
+3bac0674c0786689167be2b9f35d2d6e91d5477dee11de753fe3b6e22b93d47c  bitcoin-0.18.1-win64-setup.exe
+b0f94ab43c068bac9c10a59cb3f1b595817256a00b84f0b724f8504b44e1314f  bitcoin-0.18.1-win64.zip
 ```
 
 ### Installer Bitcoin Core
 Exécuter le fichier d'installation de Bitcoin Core (clic-droit et "Exécuter en tant qu'administrateur") et lancer l'installation avec les paramètres par défaut. Lancez le programme `bitcoin-qt.exe` qui se trouve par défaut dans le répertoire "C:\Program Files\Bitcoin". Choisissez “D:\bitcoin_mainnet”  comme répertoire de données (_data-dir_).
 
-![Bitcoin Core directory selection](images/10_bitcoinqt_directory.png)
+![Bitcoin Core directory selection](images/Bitcoin_windows_datadir.PNG)
 
 Bitcoin Core va démarrer après quelques instants et commencer immédiatement la synchronisation. **Attention**, si vous souhaitez installer un nœud Lightning, il est très important de construire un index de transactions (cf ci-dessus). Il faut donc dire à Bitcoin Core de réaliser cette tâche. Cela se fait en modifiant un fichier texte “bitcoin.conf” qui est automatiquement créé dans le répertoire de données au lancement de Bitcoin (si ce n'est pas le cas, vous pouvez aussi le créer vous-même, prenez simplement garde à le nommer correctement pour que Bitcoin le reconnaisse). 
 
