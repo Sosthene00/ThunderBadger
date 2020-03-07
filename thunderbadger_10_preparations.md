@@ -101,19 +101,24 @@ Nous allons ensuite calculer le _checksum_ du programme que nous venons de tél�
 ```
 > C:
 > cd \bitcoin
-> certutil -hashfile bitcoin-0.18.1-win64-setup.exe sha256
-3bac0674c0786689167be2b9f35d2d6e91d5477dee11de753fe3b6e22b93d47c
+> certutil -hashfile bitcoin-0.19.0.1-win64-setup.exe sha256
+4abca9419e83581209a3654a33da504998cf2f470993ee6d71f6b47fefe631a0
 ```
-![Commande Windows : vérification du checksum](images/Bitcoin_windows_certUtil.PNG)
 
-Comparer la valeur que vous obtenez avec celle que vous trouverez [ici](https://bitcoincore.org/bin/bitcoin-core-0.18.1/SHA256SUMS.asc) (**Attention, ce lien est pour la version 18.1, faites attention si vous téléchargez une autre version**. Pour les fichiers Windows v0.18.1, vous devriez voir :
+Comparer la valeur que vous obtenez avec celle que vous trouverez
+[ici](https://bitcoincore.org/bin/bitcoin-core-0.19.0.1/SHA256SUMS.asc)
+(**Attention, ce lien est pour la version 0.19.0.1, faites attention si vous
+téléchargez une autre version**. Pour les fichiers Windows v0.19.0.1, vous devriez voir :
 ```
-3bac0674c0786689167be2b9f35d2d6e91d5477dee11de753fe3b6e22b93d47c  bitcoin-0.18.1-win64-setup.exe
-b0f94ab43c068bac9c10a59cb3f1b595817256a00b84f0b724f8504b44e1314f  bitcoin-0.18.1-win64.zip
+4abca9419e83581209a3654a33da504998cf2f470993ee6d71f6b47fefe631a0  bitcoin-0.19.0.1-win64-setup.exe
+7706593de727d893e4b1e750dc296ea682ccee79acdd08bbc81eaacf3b3173cf bitcoin-0.19.0.1-win64.zip
 ```
 
 ### Installer Bitcoin Core
-Exécuter le fichier d'installation de Bitcoin Core (clic-droit et "Exécuter en tant qu'administrateur") et lancer l'installation avec les paramètres par défaut. Lancez le programme `bitcoin-qt.exe` qui se trouve par défaut dans le répertoire "C:\Program Files\Bitcoin". Choisissez “D:\bitcoin_mainnet”  comme répertoire de données (_data-dir_).
+Exécuter le fichier d'installation de Bitcoin Core (clic-droit et "Exécuter en
+tant qu'administrateur") et lancer l'installation avec les paramètres par
+défaut. Lancez le programme `bitcoin-qt.exe` qui se trouve par défaut dans le
+répertoire `C:\Program Files\Bitcoin`. Choisissez `D:\bitcoin_mainnet`  comme répertoire de données (_data-dir_).
 
 ![Bitcoin Core directory selection](images/Bitcoin_windows_datadir.PNG)
 

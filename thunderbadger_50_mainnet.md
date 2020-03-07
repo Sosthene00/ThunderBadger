@@ -18,6 +18,17 @@ Vous pouvez suivre les progrès de la synchronisation directement sur ce dernier
 
 Dès que la synchronisation est terminée, vous pouvez éteindre Bitcoin Core. Nous allons ensuite copier l'intégralité des données vers le Thunder Badger, ce qui devrait prendre 6 heures environ.
 
+### Arrêter Bitcoin Core sur les deux machines
+
+Pour pouvois copier les données de la blockchain, il est nécessaire
+d'interrompre Bitcoin Core sur les deux machines. Sur votre machine principale,
+si vous avez utiliser l'interface graphique cliquer sur la croix pour fermer la
+fenêtre permet de quitter Bitcoin Core (une nouvelle fenêtre vous avertissant
+de ne pas éteindre l'ordinateur devrait apparaître quelques seconde à l'écran.
+
+Sur le Thunder Badger, vous pouvez arrêter Bitcoin Core avec la commande `$
+bitcoin-cli stop`.
+
 ### Activer temporairement l'authentification par mot de passe
 
 Vous vous souvenez que nous avions configuré SSH pour ne plus avoir à saisir notre mot de passe lors de la connexion. Et bien nous allons temporairement réactiver le mot de passe pour pouvoir effectuer la copie de données.
@@ -60,7 +71,11 @@ _To Do : chercher une meilleure alternative, par exemple une qui pourrait utilis
 
 ## Renvoyez vos bitcoins testnet
 
-Il est de coûtume de renvoyer les bitcoins du testnet dont nous n'avons plus usage afin que d'autres utilisateurs puissent les utiliser. Si vous avez terminé avec le testnet, vous pouvez donc fermer tous vos canaux de paiement et renvoyer les fonds disponibles dans votre portefeuille sur l'adresse indiquée par [le faucet]([Bitcoin Testnet Faucet](https://testnet.manu.backend.hamburg/faucet).  
+Il est de bon ton de renvoyer les bitcoins du testnet dont nous n'avons plus
+usage afin que d'autres utilisateurs puissent les utiliser. Si vous avez
+terminé avec le testnet, vous pouvez donc fermer tous vos canaux de paiement et
+renvoyer les fonds disponibles dans votre portefeuille sur l'adresse indiquée
+par le faucet que vous avez utilisé.  
 
 * `$ su bitcoin` (tapez le mot de passe de l'utilisateur "bitcoin")
 * `$ lncli closeallchannels`
@@ -150,14 +165,6 @@ Félicitations, le Thunder Badger est désormais opérationnel sur le mainnet ! 
 ### LND en action
 
 Si vous avez activé "Autopilot" dans le fichier `lnd.conf`, LND commencera à créer des canaux de paiements aussitôt que votre transaction aura été minée et confirmée. Sinon vous pouvez désactiver l'autopilote et créer les canaux vous-mêmes, les commandes sont les mêmes que celles que nous avons vues pour le testnet. 
-
-Pour étrenner votre nœud Lightning tout neuf, vous pouvez envoyer quelques sats à :  
-* [Stadicus](https://mainnet.yalls.org/articles/97d67df1-d721-417d-a6c0-11d793739be9:0965AC5E-56CD-4870-9041-E69616660E6F/70858a49-d91c-40fb-ae34-bddc2e938704) l'auteur des deux guides pionniers [Raspibolt](https://github.com/Stadicus/guides/tree/master/raspibolt) et [Thundroid](https://github.com/Stadicus/guides/tree/master/thundroid),
-* [Moi-même](https://www.sosthene.net/tip/), qui ai adapté ces guides en français pour le Thunder Badger.
-* L'une des personnes qui a contribué à ce guide :
-	* ...
-	* ...
-* ...quelqu'un que vous aimez bien !
 
 ### Explorer le réseau Lightning sur le mainnet
 

@@ -12,7 +12,10 @@ Bitcoin dispose d'un réseau de test, judicieusement appelé "testnet". Avant de
 Le testnet fonctionne presque complètement de la même façon que le mainnet, et un de ses avantages est que sa blockchain est beaucoup plus légère que celle du mainnet (une quinzaine de Go), et peut donc être synchronisée en quelques heures, même sur un ordinateur qui mettrait littéralement des semaines à synchroniser le mainnet.
 
 ### Installation
-Nous allons tout d'abord télécharger le dernier [fichier binaire](https://fr.wikipedia.org/wiki/Fichier_binaire) de Bitcoin Core (18.0 en juillet 2019), et comparer l'empreinte du fichier téléchargé avec le [checksum signé](https://bitcoin.org/bin/bitcoin-core-0.18.0/SHA256SUMS.asc) (souvenez-vous, nous l'avons fait également lorsque nous avons téléchargé Bitcoin Core pour Windows à [l'étape 1](thunderbadger_10_preparations.md)).
+Nous allons tout d'abord télécharger le dernier [fichier
+binaire](https://fr.wikipedia.org/wiki/Fichier_binaire) de Bitcoin Core
+(0.19.0.1 en mars 2020), et comparer l'empreinte du fichier téléchargé avec le
+[checksum signé](https://bitcoin.org/bin/bitcoin-core-0.19.0.1/SHA256SUMS.asc) (souvenez-vous, nous l'avons fait également lorsque nous avons téléchargé Bitcoin Core pour Windows à [l'étape 1](thunderbadger_10_preparations.md)).
 
 * Se connecter en tant qu'utilisateur "admin" sur le Thunder Badger :  
 `$ ssh admin@[IP]`
@@ -23,17 +26,19 @@ Nous allons tout d'abord télécharger le dernier [fichier binaire](https://fr.w
 
 **Note** : le nom de l'utilisateur avec lequel vous êtes connecté apparaît toujours dans le terminal sous la forme `user@host`. Si vous ne savez plus dans quel dossier vous vous trouvez, regardez ce qu'il y a avant le symbole `$`. Si besoin, la commande `$ pwd` vous donnera votre emplacement.
 
-* Télécharger les différents fichiers dont nous avons besoin grâce à la commande `wget`. **Attention, le lien ci-dessous est valable pour la version actuelle (18.0)**, pensez à vous rendre sur [bitcoincore.org/en/download/](https://bitcoincore.org/en/download/) pour vérifier quelle est la dernière version.  
+* Télécharger les différents fichiers dont nous avons besoin grâce à la
+* commande `wget`. **Attention, le lien ci-dessous est valable pour la version
+* actuelle (0.19.0.1)**, pensez à vous rendre sur [bitcoincore.org/en/download/](https://bitcoincore.org/en/download/) pour vérifier quelle est la dernière version.  
 ```
-$ wget https://bitcoincore.org/bin/bitcoin-core-0.18.0/bitcoin-0.18.0-x86_64-linux-gnu.tar.gz
-$ wget https://bitcoincore.org/bin/bitcoin-core-0.18.0/SHA256SUMS.asc
+$ wget https://bitcoincore.org/bin/bitcoin-core-0.19.0.1/bitcoin-0.19.0.1-x86_64-linux-gnu.tar.gz
+$ wget https://bitcoincore.org/bin/bitcoin-core-0.19.0.1/SHA256SUMS.asc
 $ wget https://bitcoincore.org/keys/laanwj-releases.asc
 ```
 
 * Vérifier que le checksum de référence correspond à celui du fichier téléchargé :    
 ```
 $ sha256sum --check SHA256SUMS.asc --ignore-missing 
-> bitcoin-0.18.0-x86_64-linux-gnu.tar.gz: Réussi
+> bitcoin-0.19.0.1-x86_64-linux-gnu.tar.gz: Réussi
 ```
 
 :warning: Si jamais vous ne voyez pas le même message suite à cette dernière commande, **quelque chose ne va pas**, n'allez pas plus loin tant que vous n'avez pas compris ce qu'il se passe.
@@ -56,13 +61,13 @@ $ gpg --verify SHA256SUMS.asc
 
 * Extraire et installer le fichier binaire de l'archive que vous avez téléchargée (commande `tar`) :  
   ```
-  $ tar -xvf bitcoin-0.18.0-x86_64-linux-gnu.tar.gz
-  $ sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-0.18.0/bin/*
+  $ tar -xvf bitcoin-0.19.0.1-x86_64-linux-gnu.tar.gz
+  $ sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-0.19.0.1/bin/*
   ```
 * Vérifier qu'il est bien installé avec la bonne version :  
   ```
   $ bitcoind --version
-  > Bitcoin Core Daemon version v0.18.0
+  > Bitcoin Core Daemon version v0.19.0.1
   ```
 * Ouvrir une session avec l'utilisateur `bitcoin`:  
   ```
@@ -114,8 +119,10 @@ Comme nous avons ajouté la ligne `testnet=1` dans le fichier de configuration, 
 `$ bitcoind`
 
 Attendez quelques instants, et essayez les commandes suivantes :
-`$ bitcoin-cli getblockchaininfo`
-`$ bitcoin-cli getnetworkinfo`
+```
+$ bitcoin-cli getblockchaininfo
+$ bitcoin-cli getnetworkinfo
+```
 
 ![message_erreur](images/thunderbadger_30_bitcoin-cli1.png)  
 _Si vous voyez ce message, cela signifie que `bitcoind` n'a pas encore démarré, réessayez dans une ou deux minutes._
