@@ -170,7 +170,6 @@ Si vous avez activé "Autopilot" dans le fichier `lnd.conf`, LND commencera à c
 
 Il y a déjà un certain nombre de ressources pour vous aider à explorer le monde balbutiant de Lightning :
 
-* [Recksplorer](https://rompert.com/recksplorer/): une carte du réseau Lightning
 * [1ML](https://1ml.com): un moteur de recherche et d'analyse du réseau
 * [lnroute.com](http://lnroute.com): une liste très complète des ressources disponibles
 
