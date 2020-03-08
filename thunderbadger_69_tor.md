@@ -34,61 +34,61 @@ Tous ces arguments s'appliquent évidemment aussi à Lightning, dissimuler son n
 ### Installer Tor
 
 Connectez-vous via ssh en tant que admin :  
-`$ ssh admin@[VOTRE_IP]`
+` ssh admin@[VOTRE_IP]`
 
 Les instruction d'installation de Tor se trouve à l'adresse suivante : [https://www.torproject.org/docs/debian.html.en#ubuntu](https://www.torproject.org/docs/debian.html.en#ubuntu)
 
 ```
 # Activez l'utilisateur "root"
-$ sudo su
+ sudo su
 # Ajoutez le repo du torproject dans /etc/apt/sources.list
-$ echo 'deb https://deb.torproject.org/torproject.org bionic main' >> /etc/apt/sources.list
-$ echo 'deb-src https://deb.torproject.org/torproject.org bionic main' >> /etc/apt/sources.list
+ echo 'deb https://deb.torproject.org/torproject.org bionic main' >> /etc/apt/sources.list
+ echo 'deb-src https://deb.torproject.org/torproject.org bionic main' >> /etc/apt/sources.list
 
 # Afin de pouvoir vérifier l'intégrité des fichiers, nous allons également télécharger les clés du torproject
-$ gpg2 --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
-$ gpg2 --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
+ gpg2 --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+ gpg2 --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
 
 # Terminez la session "root"
-$ exit
+ exit
 
 # Nous allons maintenant installer la dernière version de Tor
-$ sudo apt update
-$ sudo apt install tor deb.torproject.org-keyring
+ sudo apt update
+ sudo apt install tor deb.torproject.org-keyring
 ```
 
 Arrivé à cette étape, Tor devrait déjà être actif sur votre ordinateur.
 ```
 # Vérifiez qu'un service "tor" a bien été créé et qu'il est actif
-$ systemctl status tor.service
+ systemctl status tor.service
 
 # Ouvrez le fichier tor-service-defaults-torrc, vérifiez que "user" est bien "debian-tor"
-$ cat /usr/share/tor/tor-service-defaults-torrc
+ cat /usr/share/tor/tor-service-defaults-torrc
 
 # Vérifiez les utilisateurs correspondants au groupe
-$ cat /etc/group | grep debian-tor
+ cat /etc/group | grep debian-tor
 > debian-tor:x:123:bitcoin
 
 # Si l'utilisateur "bitcoin" n'apparaît pas comme ci-dessus
-$ sudo adduser bitcoin debian-tor
-$ cat /etc/group | grep debian-tor
+ sudo adduser bitcoin debian-tor
+ cat /etc/group | grep debian-tor
 > debian-tor:x:123:bitcoin
 
 # Enfin, il faut activer une option dans /etc/tor/torrc
-$ nano /etc/tor/torrc
+ nano /etc/tor/torrc
 > #ControlPort 9051 (retirez le "#")
 > #CookieAuthentication 1 (idem)
 # Ajoutez cette ligne si vous ne la trouvez pas dans le fichier
 > CookieAuthFileGroupReadable 1
 
 # Redémarrez tor.service pour que le changement soit pris en compte
-$ sudo systemctl restart tor.service
+ sudo systemctl restart tor.service
 ```
 
 ### Configurer Bitcoin Core
 
 Ouvrez une nouvelle session avec l'utilisateur "bitcoin". Tout d'abord, arrêtez Bitcoin Core :  
-`$ bitcoin-cli stop`
+` bitcoin-cli stop`
 
 Nous allons désormais ajouter les lignes suivantes dans `bitcoin.conf` :
 ```
@@ -97,7 +97,7 @@ bind=127.0.0.1
 listenonion=1
 ```
 Redémarrez Bitcoin Core pour que les changements soient pris en compte :  
-`$ nohup bitcoind`
+` nohup bitcoind`
 
 :point_right: Une [très bonne vidéo](https://youtu.be/57GW5Q2jdvw) qui montre (presque) le même processus
 
@@ -107,10 +107,10 @@ Redémarrez Bitcoin Core pour que les changements soient pris en compte :
 :warning: Je vous recommande d'utiliser dans la mesure du possible un nouveau nœud, ou au minimum de fermer tous vos canaux existant avant de passer sur Tor. En effet, je pense que si votre clé publique est déjà connue par d'autres pairs avec votre URL, il leur sera toujours possible de vous reconnaître même derrière Tor. Je n'ai toutefois jamais rien lu sur le sujet, et je suis preneur de toute information qui confirmerait ou invaliderait mes craintes. 
 
 Toujours avec l'utilisateur "bitcoin", arrêtez LND :  
-`$ lncli stop`
+` lncli stop`
 
 Ouvrez le fichier de configuration :  
-`$ nano .lnd/lnd.conf`
+` nano .lnd/lnd.conf`
 
 Ajoutez les lignes suivantes :
 ```
@@ -121,11 +121,40 @@ listen=localhost
 
 Redémarrez LND comme d'habitude :
 ```
-$ nohup lnd
-$ lncli unlock
+ nohup lnd
+ lncli unlock
 ```
 
 :point_right: Plus d'information [ici](https://github.com/lightningnetwork/lnd/blob/master/docs/configuring_tor.md).
+
+### Configurer Éclair
+* Arrêtez Éclair :  
+```
+screen -r eclair
+<Ctrl + c>
+<Ctrl + a, d>
+```
+* Ouvrez le fichier de configuration :  
+`nano .eclair/eclair.conf`
+
+* Maintenant, les choses sérieuses. Ajoutez les lignes suivantes dans votre fichier :  
+```
+eclair.tor.enabled=true
+eclair.server.binding-ip="127.0.0.1"
+eclair.socks5.enabled=true
+eclair.socks5.use-for-ipv4 = true
+eclair.socks5.use-for-ipv6 = true
+eclair.socks5.use-for-tor = true
+```
+
+Enregistrez et fermez le fichier.  
+
+* Redémarrez Éclair :  
+```
+screen -r eclair
+java -jar eclair-node-0.3.3-12ac145.jar
+<Ctrl + a, d>
+```
 
 ### Comment vérifier que le trafic est bien masqué derrière Tor ?
 
@@ -160,12 +189,15 @@ Pour le savoir, connectez-vous à [cette page](https://bitnodes.earn.com/) et co
 Si le site n'arrive pas à joindre votre noeud, pas d'inquiétude, ça lui arrive parfois. Réessayez quelques instants plus tard et en général ça passe sans problème.
 
 * Enfin, vous pouvez également vérifier l'adresse à laquelle vos pairs vous voient grâce à cette commande (pour faire le `|`, Alt Gr + 6)  :  
-`$ bitcoin-cli getpeerinfo | grep  local`
+`bitcoin-cli getpeerinfo | grep  local`
 
 Vous devriez voir une liste d'adresse IP inconnues. Si vous voyez encore votre véritable adresse IP publique dans cette liste, cela signifie **qu'un de vos pairs est connecté avec vous sans passer par le réseau Tor, et donc que votre adresse IP est visible par le réseau**.
 
 2. LND
 * Votre adresse IP ne devrait plus apparaître avec les commandes `lncli getinfo` ou `lncli getnodeinfo [VOTRE_CLÉ_PUBLIQUE]`
+
+2. Éclair
+* Votre adresse IP ne devrait plus apparaître dans l'output de `eclair-cli getinfo`.
 
 ### Aller plus loin
 
