@@ -14,7 +14,7 @@
 
 Tor est un logiciel libre d'anonymisation de trafic internet, dont le principe est de faire transiter une information par un certain nombre de relais afin de masquer l'emplacement respectif des points de départ et d'arrivée. 
 
-Il fonctionne sur le principe d'un "réseau en oignon" : l'information est encryptée avec plusieurs clés publiques appartenant aux différents relais par lesquels elle transite. Chaque relai décrypte la couche correspondant à sa clé privée avant de la passer au suivant, d'où le terme "oignon".
+Il fonctionne sur le principe d'un "réseau en oignon" : l'information est chiffrée avec plusieurs clés publiques appartenant aux différents relais par lesquels elle transite. Chaque relai décrypte la couche correspondant à sa clé privée avant de la passer au suivant, d'où le terme "oignon".
 
 :point_right: Pour en savoir plus : [https://fr.wikipedia.org/wiki/Tor_(r%C3%A9seau)](https://fr.wikipedia.org/wiki/Tor_(r%C3%A9seau))
 
@@ -196,7 +196,7 @@ Vous devriez voir une liste d'adresse IP inconnues. Si vous voyez encore votre v
 2. LND
 * Votre adresse IP ne devrait plus apparaître avec les commandes `lncli getinfo` ou `lncli getnodeinfo [VOTRE_CLÉ_PUBLIQUE]`
 
-2. Éclair
+3. Éclair
 * Votre adresse IP ne devrait plus apparaître dans l'output de `eclair-cli getinfo`.
 
 ### Aller plus loin
