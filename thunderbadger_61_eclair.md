@@ -79,7 +79,7 @@ zmqpubrawtx=tcp://127.0.0.1:29000
 
 Enregistrez et fermez le fichier, puis relancez Bitcoin Core.
 
-###Configuration d'Éclair
+### Configuration d'Éclair
 
 * Dans le dossier de l'utilisateur, créer le répertoire de configuration pour Éclair et le fichier de configuration :  
 ```
@@ -125,7 +125,7 @@ Votre nœud Lightning est prêt. Contrairement à c-lightning et LND, Éclair a 
 
 * Envoyez des bitcoins sur cette adresse depuis n'importe quel wallet.  
 
-* Vérifier le montant sur votre portefeuille.
+* Vérifier le montant sur votre portefeuille :  
 `bitcoin-cli getbalance`  
   
 ### Installer eclair-cli
@@ -154,7 +154,7 @@ Enregistrez et quittez. Testez la commande suivante :
 
 Il y a deux temps, d'abord il faut se connecter à un nœud, puis ensuite ouvrir un canal (vous pouvez regarder dans l'[explorer d'Acinq](https://explorer.acinq.co/) pour trouver quelques gros nœuds avec lesquels il serait intéressant de se connecter).  
 
-Pour se connecter à un nœud, nous avons besoin d'un id (en fait, une clé publique) et d'une adresse IP (et parfois d'un numéro de port quand le standard 9735 n'est pas utilisé). Ces informations sont généralement présentées sous la forme <node-id>@<ip-adress>:<port>
+Pour se connecter à un nœud, nous avons besoin d'un id (en fait, une clé publique) et d'une adresse IP (et parfois d'un numéro de port quand le standard 9735 n'est pas utilisé). Ces informations sont généralement présentées sous la forme `<node-id>@<ip-adress>:<port>`.
 
 * Se connecter :  
 `eclair-cli --nodeId=<node-id> --host=<ip-adress> (--port=<port>)`
@@ -164,7 +164,7 @@ Pour se connecter à un nœud, nous avons besoin d'un id (en fait, une clé publ
 
 Le deuxième argument est le montant avec lequel vous souhaitez initialiser le canal avec ce pair. Il sera déduit du montant disponible dans votre portefeuille. **Ce montant n'est pas exprimé en bitcoins, mais en satoshis**. Pour rappel, 1 btc == 100,000,000 sats.
 
-:pointright: Toutes les commandes détaillées [ici](https://acinq.github.io/eclair/#introduction)
+:point_right: Toutes les commandes détaillées [ici](https://acinq.github.io/eclair/#introduction)
 
 ---
 
