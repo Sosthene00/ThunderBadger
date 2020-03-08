@@ -10,6 +10,13 @@
 
 Jusqu'à maintenant, vous avez vu le minimum vital. Dans cette section seront regroupés à terme divers tutos permettant d'ajouter des fonctionnalités plus ou moins utiles à votre Thunder Badger.
 
+## [**Éclair**](thunderbadger_61_eclair.md)
+
+*Difficulté: facile*
+
+Nous avons installé LND, mais il existe deux autres implémentations de Lightning avec lesquelles nous pouvons jouer !  
+Développée par les Français d'Acinq, Éclair s'est imposé comme un concurrent sérieux en particulier avec sa version mobile pour Android. Mais cela n'empêche pas de le faire tourner sur le Thunder Badger, et c'est ce que je vous propose ici.  
+
 ## [**Electrum Personal Server**](thunderbadger_64_electrum.md)
 
 *Difficulté: moyenne*

@@ -8,7 +8,8 @@
 
 Nous allons télécharger et installer LND (Lightning Network Daemon) de [Lightning Labs](http://lightning.engineering/). Vous pouvez aussi aller voir leur [repo sur Github](https://github.com/lightningnetwork/lnd/blob/master/README.md) qui contient une mine d'informations sur le projet et Lightning en général.
 
-:warning: J'ai décidé de réaliser ce tuto avec LND en particulier car c'est l'implémentation de Lightning que j'ai le plus utilisé jusqu'à aujourd'hui et avec laquelle je suis le plus à l'aise. Il existe au moins deux autres implémentations, [c-lightning](https://github.com/ElementsProject/lightning) et [Éclair](https://github.com/ACINQ/eclair) qui marchent toutes les deux très bien aussi et pourraient être utilisées pour ce tuto.
+:warning: J'ai décidé de réaliser ce tuto avec LND en particulier car c'est l'implémentation de Lightning que j'ai le plus utilisé jusqu'à aujourd'hui et avec laquelle je suis le plus à l'aise. Il existe au moins deux autres implémentations, [c-lightning](https://github.com/ElementsProject/lightning) et [Éclair](https://github.com/ACINQ/eclair) qui marchent toutes les deux très bien aussi et pourraient être utilisées pour ce tuto.  
+D'ailleurs je vous explique comment installer Éclair à la place de LND [ici](thunderbadger_61_eclair.md).
 
 ### Installer LND
 Maintenant, les choses sérieuses : télécharger, vérifier, et installer le fichier binaire de LND.
